@@ -1,4 +1,18 @@
-/* Put your CSS here */
+
 html, body {
     margin: 20px;
+}
+
+#mocha-fixture {
+  position: fixed;
+  border: 1px black solid;
+  bottom: 20px;
+  right: 20px;
+}
+
+#mocha-fixture {
+  transform: scale(0.6);
+  -webkit-transform: scale(0.6);
+  transform-origin: bottom right;
+  -webkit-transform-origin: bottom right;
 }
