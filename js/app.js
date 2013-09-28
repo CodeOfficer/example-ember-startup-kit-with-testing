@@ -92,7 +92,7 @@ App.injectTestHelpers();
 
 // Run before each test case.
 beforeEach(function () {
-  Ember.run(function () { App.reset(); });
+  Ember.run(App, 'reset');
   Ember.testing = true;
 });
 
@@ -103,7 +103,7 @@ afterEach(function () {
 
 // Clean up after our last test so you can try out the app
 after(function () {
-  Ember.run(function () { App.reset(); });
+  Ember.run(App, 'reset');
 });
 
 // ----- TESTS
