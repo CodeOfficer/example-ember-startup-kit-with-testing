@@ -64,10 +64,6 @@ chai.should();
 
 var server;
 
-sinon.config = {
-  useFakeTimers: false
-};
-
 Ember.testing = true;
 Ember.Test.adapter = Ember.Test.MochaAdapter.create();
 
