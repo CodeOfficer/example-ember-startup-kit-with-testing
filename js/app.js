@@ -71,11 +71,11 @@ var testing = function() {
     container: function() {
       return App.__container__;
     },
-    controller: function( name ) {
+    controllerFor: function( name ) {
       return helper.container().lookup('controller:' + name);
     },
     currentPath: function() {
-      return helper.controller('application').get('currentPath');
+      return helper.controllerFor('application').get('currentPath');
     }
   };
   return helper;
