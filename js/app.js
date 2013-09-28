@@ -64,7 +64,6 @@ chai.should();
 
 var server;
 
-Ember.testing = true;
 Ember.Test.adapter = Ember.Test.MochaAdapter.create();
 
 var testing = function(){
