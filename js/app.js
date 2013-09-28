@@ -51,7 +51,7 @@ App.EmployeesIndexRoute = Ember.Route.extend({
 
 App.EmployeesEmployeeController = Ember.ObjectController.extend({
   actions: {
-    giveRaise: function () {
+    giveRaise: function() {
       this.set("salary", this.get("salary") * 1.1);
     }
   }
@@ -66,19 +66,19 @@ var server;
 
 Ember.Test.adapter = Ember.Test.MochaAdapter.create();
 
-var testing = function(){
+var testing = function() {
   var helper = {
-    container: function(){
+    container: function() {
       return App.__container__;
     },
-    controller: function( name ){
+    controller: function( name ) {
       return helper.container().lookup('controller:' + name);
     },
-    currentPath: function(){
+    currentPath: function() {
       return helper.controller('application').get('currentPath');
     }
   };
-return helper;
+  return helper;
 };
 
 Ember.Test.registerHelper('currentPath', function() {
@@ -90,34 +90,34 @@ App.setupForTesting();
 App.injectTestHelpers();
 
 // Run before each test case.
-beforeEach(function () {
+beforeEach(function() {
   Ember.run(App, 'reset');
   Ember.testing = true;
 });
 
 // Run after each test case.
-afterEach(function () {
+afterEach(function() {
     Ember.testing = false;
 });
 
 // Clean up after our last test so you can try out the app
-after(function () {
+after(function() {
   Ember.run(App, 'reset');
 });
 
 // ----- TESTS
 
-describe("Model", function () {
-  describe("App.Employee", function () {
+describe("Model", function() {
+  describe("App.Employee", function() {
     var store;
 
-    beforeEach(function(){
+    beforeEach(function() {
       store = App.__container__.lookup('store:main');
     });
 
-    it("has a name", function () {
+    it("has a name", function() {
       var jane;
-      Ember.run(function () {
+      Ember.run(function() {
         jane = store.find('employee', 1);
       });
       jane.get("name").should.equal("Jane Q. Public");
@@ -125,24 +125,24 @@ describe("Model", function () {
   });
 });
 
-describe("Controller", function () {
-  describe("App.EmployeesEmployeeController", function () {
+describe("Controller", function() {
+  describe("App.EmployeesEmployeeController", function() {
     var model, controller;
 
-    beforeEach(function () {
+    beforeEach(function() {
       var container = App.__container__;
       var store = container.lookup('store:main');
       controller = container.lookup('controller:employeesEmployee');
 
-      Ember.run(function () {
+      Ember.run(function() {
         model = store.createRecord('employee', { salary: 100000 });
         controller = controller.set('model', model);
       });
     });
 
-    it("can give the employee a raise", function () {
+    it("can give the employee a raise", function() {
       var oldSalary = model.get("salary");
-      Ember.run(function () {
+      Ember.run(function() {
         controller.send('giveRaise');
       });
       model.get("salary").should.equal(oldSalary * 1.1);
@@ -150,9 +150,9 @@ describe("Controller", function () {
   });
 });
 
-describe("Integration", function () {
-  describe("App", function () {
-    it("lets you give Jane Q. Public a raise", function () {
+describe("Integration", function() {
+  describe("App", function() {
+    it("lets you give Jane Q. Public a raise", function() {
       visit('/')
         .then(function() {
           currentPath().should.equal('employees.index');
@@ -169,7 +169,7 @@ describe("Integration", function () {
         });
     });
 
-    it("lets you give John Q. Public a raise", function () {
+    it("lets you give John Q. Public a raise", function() {
       visit('/')
         .then(function() {
           currentPath().should.equal('employees.index');
